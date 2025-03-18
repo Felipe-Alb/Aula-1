@@ -36,7 +36,7 @@ public class GreetingControllerTests {
 
 	@Test
 	public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
-
+/*Ele é um metodo de teste em Java para verificar se a API Rest está certa na requisição GET /greeting quando não fornecemos nenhum parametro */
 		this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
 				.andExpect(jsonPath("$.content").value("Hello, World!"));
 	}
