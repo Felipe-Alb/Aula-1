@@ -39,14 +39,21 @@ public class GreetingControllerTests {
 /*Ele é um metodo de teste em Java para verificar se a API Rest está certa na requisição GET /greeting quando não fornecemos nenhum parametro */
 		this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
 				.andExpect(jsonPath("$.content").value("Hello, World!"));
+	/*O perform Simula uma requisição GET para o /greeting
+	AndDo mostra os detalhes da requisição e da resposta no console
+	andExpect status is ok Verifica se o status HTTP da resposta é OK
+	andExpect jsonpatch verifica se o JSON de resposta contém o campo content com o valor "Hello, World!*/
 	}
 
 	@Test
 	public void paramGreetingShouldReturnTailoredMessage() throws Exception {
-
+/* Indica que testa uma saudação personalizada */
 		this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
 				.andDo(print()).andExpect(status().isOk())
 				.andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+	/* perform get Simula uma requisição GET para /greeting, passando o parâmetro name=Spring Community 
+	andDo Exibe detalhes da requisição e resposta no console
+	andExpect status Verifica se o status HTTP da resposta está Ok
+	and Expext jsonPatch Confirma se o JSON de resposta contém o campo content com o valor "Hello, Spring Community!"*/
 	}
-
 }
